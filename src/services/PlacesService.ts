@@ -1,5 +1,3 @@
-import { LatLng } from 'leaflet';
-
 interface PlaceResult {
   place_id: string;
   name: string;
@@ -64,7 +62,7 @@ export async function geocodePostcode(postcode: string): Promise<[number, number
   }
 }
 
-export async function fetchHalalPlaces(center: LatLng, radius: number = 5000): Promise<PlaceResult[]> {
+export async function fetchHalalPlaces(center: { lat: number; lng: number }, radius: number = 5000): Promise<PlaceResult[]> {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   
   if (!apiKey) {
